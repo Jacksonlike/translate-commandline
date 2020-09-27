@@ -1,0 +1,33 @@
+{
+  "name": "translate-commandline",
+  "version": "1.0.0",
+  "description": "A command line tool that you can translate everything!",
+  "main": "index.js",
+  "bin": {
+    "translate": "bin/translate",
+    "t": "bin/translate"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/Jacksonlike/translate-commandline.git"
+  },
+  "keywords": [
+    "translate",
+    "translation",
+    "command line tool",
+    "youdao",
+    "google",
+    "baidu"
+  ],
+  "author": "jacksonlike<jacksonlike290@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jacksonlike/translate-commandline/issues"
+  },
+  "homepage": "https://github.com/Jacksonlike/translate-commandline#readme",
+  "dependencies": {
+  }
+}
