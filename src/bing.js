@@ -34,7 +34,7 @@ async function translate(text, to) {
 
     const body = response.body;
     if (!isType.isArray(body) || body.length <= 0) {
-      print.error(`<${translateUrl}> unknown error, response body:${body}】`);
+      print.error(`<${translateUrl}> unknown error, response body:${JSON.stringify(body)}`);
       return false;
     }
 
@@ -93,6 +93,7 @@ async function printTranslations(text, to) {
   print.title(text, site);
   const describe = await translate(text, to);
   if (!describe) {
+    spinner.stop();
     return false;
   }
   const guessWords = await guess(describe.language, text, to);
