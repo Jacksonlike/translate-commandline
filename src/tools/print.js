@@ -16,6 +16,7 @@ function result(word, transliteration) {
   }
 
   console.log(result);
+  console.log();
 }
 
 function allTranslations(translations) {

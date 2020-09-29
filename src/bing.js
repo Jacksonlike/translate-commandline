@@ -88,7 +88,7 @@ async function guess(from, text, to) {
   }
 }
 
-async function translateByBing(text, to) {
+async function printTranslations(text, to) {
   const spinner = ora().start();
   print.title(text, site);
   const describe = await translate(text, to);
@@ -101,4 +101,8 @@ async function translateByBing(text, to) {
   print.allTranslations(guessWords);
 }
 
-translateByBing('status', 'zh-Hans');
+module.exports = {
+  translate,
+  guess,
+  printTranslations,
+};
