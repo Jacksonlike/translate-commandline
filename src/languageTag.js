@@ -26,4 +26,4 @@ module.exports = {
   nb: 'Norsk',
   fa: 'فارسی',
   ar: 'العربية',
-}
+};

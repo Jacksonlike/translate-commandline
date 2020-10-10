@@ -1,8 +1,8 @@
 const superagent = require('superagent');
 const ora = require('ora');
-const HTMLParser = require('node-html-parser');
 const print = require('./tools/print');
 const isType = require('./tools/isType');
+const parseBingDict = require('./parseBingDict');
 
 const site = 'cn.bing.com';
 const translateUrl = 'http://cn.bing.com/ttranslatev3';
@@ -36,7 +36,11 @@ async function translate(text, to) {
 
     const body = response.body;
     if (!isType.isArray(body) || body.length <= 0) {
-      print.error(`<${translateUrl}> unknown error, response body:${JSON.stringify(body)}`);
+      print.error(
+        `<${translateUrl}> unknown error, response body:${JSON.stringify(
+          body,
+        )}`,
+      );
       return false;
     }
 
@@ -90,19 +94,11 @@ async function guess(from, text, to) {
   }
 }
 
-function matchTranscription(html) {
-  // const titleString = html.match(/class="hd_p1_1".*?\<\/strong\>/)[0];
-  const tNode = html.querySelector(".hd_p1_1");
-  if (!tNode || !tNode.childNodes) {
-    return;
-  }
-
-
-}
-
 async function dict(text) {
   try {
-    const response = await superagent.get(`${dictUrl}${encodeURIComponent(text)}`)
+    const response = await superagent.get(
+      `${dictUrl}${encodeURIComponent(text)}`,
+    );
     if (response.status !== 200) {
       print.error(
         `<${dictUrl}> request error, response code:${response.status}!`,
@@ -110,9 +106,8 @@ async function dict(text) {
       return;
     }
 
-    const html = HTMLParser.parse(response.text);
-    const transcription = matchTranscription(html);
-    console.log(transcription, "33333333");
+    const result = parseBingDict(response.text);
+    console.log(result, '33333333');
   } catch (err) {
     print.error(
       `<${dictUrl}> request error（${err}）, please check your network!`,
@@ -131,9 +126,8 @@ async function printTranslations(text, to) {
   }
   spinner.stop();
 
-  const supportDict = ["zh-Hans", "en"];
-  if (supportDict.includes(to)
-    && supportDict.includes(describe.language)) {
+  const supportDict = ['zh-Hans', 'en'];
+  if (supportDict.includes(to) && supportDict.includes(describe.language)) {
     spinner = ora().start();
     dict(text);
     spinner.stop();

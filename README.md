@@ -27,35 +27,35 @@ It supports translation of many languages power by [cn.bing.com](https://cn.bing
 
 Supports language list:
 
-|  Tag    |  language |
-|  ----   |  ----     |
-|   en    |  English  |
-|   ru    |  Русский  |
-|   tr    |  Türkçe   |
-|   es    |  Español  |
-|   ko    |  한국어    |
-|   sv    |  Svenska  |
-|   it    |  Italiano |
-|   id    |  Bahasa Indonesia |
-|   pl    |  Polski |
-|   ja    |  日本語 |
-|   fr    |  Français |
-|   he    |  עברית |
-|   hu    |  Magyar |
-|   vi    |  Tiếng Việt |
-|   th    |  ไทย |
-|   sk    |  Slovenčina |
-|   te    |  తెలుగు |
-|   uk    |  Українська |
-|   bg    |  Български |
-|   cs    |  Čeština |
-|   de    |  Deutsch |
-|   nl    |  Nederlands |
-|   nb    |  Norsk |
-|   fa    |  فارسی |
-|   ar    |  العربية |
-| zh-Hant | 繁體中文 |
-| zh-Hans | 简体中文 |
+| Tag     | language         |
+| ------- | ---------------- |
+| en      | English          |
+| ru      | Русский          |
+| tr      | Türkçe           |
+| es      | Español          |
+| ko      | 한국어           |
+| sv      | Svenska          |
+| it      | Italiano         |
+| id      | Bahasa Indonesia |
+| pl      | Polski           |
+| ja      | 日本語           |
+| fr      | Français         |
+| he      | עברית            |
+| hu      | Magyar           |
+| vi      | Tiếng Việt       |
+| th      | ไทย              |
+| sk      | Slovenčina       |
+| te      | తెలుగు           |
+| uk      | Українська       |
+| bg      | Български        |
+| cs      | Čeština          |
+| de      | Deutsch          |
+| nl      | Nederlands       |
+| nb      | Norsk            |
+| fa      | فارسی            |
+| ar      | العربية          |
+| zh-Hant | 繁體中文         |
+| zh-Hans | 简体中文         |
 
 If `words` is English or Chinese, you can omit `into` parameter.
 
