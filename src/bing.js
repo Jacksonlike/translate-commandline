@@ -2,6 +2,7 @@ const superagent = require('superagent');
 const ora = require('ora');
 const print = require('./tools/print');
 const isType = require('./tools/isType');
+const playSound = require('./tools/playSound');
 const parseBingDict = require('./parseBingDict');
 
 const site = 'cn.bing.com';
@@ -106,8 +107,7 @@ async function dict(text) {
       return;
     }
 
-    const result = parseBingDict(response.text);
-    console.log(result, '33333333');
+    return parseBingDict(response.text);
   } catch (err) {
     print.error(
       `<${dictUrl}> request error（${err}）, please check your network!`,
@@ -116,7 +116,7 @@ async function dict(text) {
   }
 }
 
-async function printTranslations(text, to) {
+async function printTranslations(text, to, pronunciation) {
   let spinner = ora().start();
   print.title(text, site);
   const describe = await translate(text, to);
@@ -127,11 +127,25 @@ async function printTranslations(text, to) {
   spinner.stop();
 
   const supportDict = ['zh-Hans', 'en'];
-  if (supportDict.includes(to) && supportDict.includes(describe.language)) {
+  if (
+    text.split(' ').length === 1 &&
+    supportDict.includes(to) &&
+    supportDict.includes(describe.language)
+  ) {
     spinner = ora().start();
-    dict(text);
+    const wordDict = await dict(text);
     spinner.stop();
-    return true;
+    if (wordDict) {
+      if (!wordDict.title) {
+        wordDict.title = text;
+      }
+
+      print.dict(wordDict);
+      if (pronunciation && wordDict.mp3) {
+        playSound(wordDict.mp3);
+      }
+      return true;
+    }
   }
 
   spinner = ora().start();
@@ -145,5 +159,6 @@ async function printTranslations(text, to) {
 module.exports = {
   translate,
   guess,
+  dict,
   printTranslations,
 };
