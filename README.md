@@ -6,7 +6,7 @@ A command line tool that you can translate everything!
 
 [![NPM version](https://img.shields.io/npm/v/translate-commandline.svg?style=flat-square)](https://npmjs.org/package/translate-commandline) [![NPM downloads](http://img.shields.io/npm/dm/translate-commandline.svg?style=flat-square)](https://npmjs.org/package/translate-commandline)
 
-![0eXJ8U.md.png](https://s1.ax1x.com/2020/09/29/0eXJ8U.png)
+![0eXJ8U.md.png](https://s1.ax1x.com/2020/10/13/0hRGMn.png)
 
 </div>
 
